@@ -3,14 +3,12 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { ChatRoomType } from 'src/stores/useChatStore'
 import { useLayoutStore } from 'src/stores/useLayoutStore'
-import ChatRoom, { ChatHeader, ChatSupportHeader } from './chat/ChatRoom'
-import './chat/ChatRoom.scss'
+import ChatRoom, { ChatHeader, ChatSupportHeader } from '../chat/ChatRoom'
+import '../chat/ChatRoom.scss'
 import './FooterMenu.scss'
-// import './history/GameHistory.scss'
 import SVGChat from './SVGChat.svg'
 import SVGChipReflection from './SVGChipReflection.svg?react'
 import SVGClose from './SVGClose.svg?react'
-// import SVGRight from './SVGRight.svg?react'
 import SVGSupport from './SVGSupport.svg'
 
 const Layout = ({
@@ -28,7 +26,6 @@ const Layout = ({
 }) => {
   const isOpenMenu = useLayoutStore((state) => state.isOpenMenu)
   const closeMenu = useLayoutStore().closeMenu
-  // const menuPage = useLayoutStore((state) => state.menuPage)
 
   const handleBackClick = () => {
     if (handleBack) {
@@ -109,15 +106,9 @@ export default function FooterMenu() {
         <div className="list cursor-pointer">
           <div className="row" onClick={() => useLayoutStore.setState({ menuPage: 'history' })}>
             Game History details
-            {/* <SVGRight /> */}
           </div>
           <div className="row" onClick={() => useLayoutStore.setState({ menuPage: 'rules' })}>
             <span>Help & Rules</span>
-            {/* <SVGRight /> */}
-          </div>
-          <div className="row" onClick={() => useLayoutStore.setState({ menuPage: 'limits' })}>
-            <span>Payouts & Limits</span>
-            {/* <SVGRight /> */}
           </div>
           <div className="row text-error" onClick={leave}>
             <span>Leave game</span>

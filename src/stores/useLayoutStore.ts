@@ -1,16 +1,6 @@
 import { create } from 'zustand'
 
-export type MenuPageType =
-  | 'index'
-  | 'history'
-  | 'rules'
-  | 'limits'
-  | 'rules_inner'
-  | 'history_type'
-  | 'history_list'
-  | 'history_content'
-  | 'chat'
-  | 'chat_support'
+export type MenuPageType = 'index' | 'history' | 'rules' | 'chat' | 'chat_support'
 
 type BoardLayoutType = {
   isOpenSelector: boolean
@@ -23,7 +13,7 @@ type BoardLayoutType = {
 export const useLayoutStore = create<BoardLayoutType>((set) => ({
   isOpenSelector: false,
   menuPage: 'chat',
-  isOpenMenu: !false,
+  isOpenMenu: true,
 
   closeMenu: () => set({ isOpenMenu: false, menuPage: 'index' }),
 }))

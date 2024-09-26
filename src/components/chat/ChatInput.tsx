@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import SVGMail from '../SVGMail.svg'
+import SVGMail from '../menu/SVGMail.svg'
 import ChatButton from './ChatButton'
 
 import { ChatRoomType, useChatStore } from 'src/stores/useChatStore'
