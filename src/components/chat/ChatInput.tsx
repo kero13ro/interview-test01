@@ -9,7 +9,6 @@ export default function ChatInput({ type }: { type: ChatRoomType }) {
   const [isEmpty, setIsEmpty] = useState<boolean>(true)
   const [isFocus, setIsFocus] = useState<boolean>(false)
 
-  // for test
   const add = useChatStore.getState().add
 
   const onFocusChanged = (focus: boolean) => {

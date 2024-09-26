@@ -1,46 +1,29 @@
-# react-live-roulette
+# Chat & Live Interface
 
-## Overview
+## Description
 
-- Ensure the UI details ans scalable, use SVG as much as possible.
+Implement a chat interface that allows players to communicate either with the dealer and other players or with live support.
 
-  `SVGR`: transform SVG into React components
+- A toggle/switch should be available on the left side of the chat interface to switch between the Game Chat (with the dealer and other players) and Live Support.
 
-## Installation Steps
+- By default, the chat with players and dealers should be open.
 
-```bash
-git clone CURRENT_REPO_URL
-cd react-live-roulette
+### Chat Rules
 
-# Copy environment variables.
-cp .env.example .env
+- Maximum message length: 75 characters.
 
-# Install dependencies
-npm ci
-```
+- Display the last 50 messages in the chat.
 
-## Available Scripts
+- Players can see messages sent by other players in the Game Chat.
 
-### Running the development
+- When the chat window is opened, players must be able to switch between the Game Chat with the dealer and Live Support.
 
-```bash
-    npm run dev
-```
+### Acceptance Criteria
 
-### Building for production.
+- Players can send messages in the Game Chat visible to the dealer and other players.
 
-```bash
-    npm run build
-```
+- Players can switch to Live Support chat within the same interface.
 
-### Running the production server
+- Players can send messages to Live Support, but these messages are only visible to the player and Live Support, not to other players.
 
-```bash
-    npm run preview
-```
-
-## Stack
-
-- Zustand: UI State management
-- Tailwind: utility-first framework
-- SCSS: for figma export style
+- The chat should display the last 50 messages sent by players and dealers in the Game Chat.
