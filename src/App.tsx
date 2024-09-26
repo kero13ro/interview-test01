@@ -1,4 +1,4 @@
-import FooterMenu from './components/layout/menu/FooterMenu'
+import FooterMenu from './components/menu/FooterMenu'
 
 export default function App() {
   return (
