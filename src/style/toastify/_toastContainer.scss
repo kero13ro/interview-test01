@@ -1,0 +1,23 @@
+.#{$rt-namespace}__toast-container {
+  z-index: 9999;
+  position: fixed;
+  padding: 4px;
+  box-sizing: border-box;
+  color: #fff;
+
+  &--top-right {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+// @media #{$rt-mobile} {
+//   .#{$rt-namespace}__toast-container {
+//     width: 100vw;
+//     padding: 0;
+//     left: 0;
+//     margin: 0;
+//     top: 0;
+//     transform: translateX(0);
+//   }
+// }

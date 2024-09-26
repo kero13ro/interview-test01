@@ -1,0 +1,62 @@
+body {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #010101;
+  color: white;
+  font-family: var(--Typography-Font, Lufga);
+  font-feature-settings: 'ss02' on;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  :focus-visible {
+    outline: none;
+  }
+}
+
+#root {
+  width: 100dvw;
+  // max-width: 390px;
+
+  min-height: 100dvb;
+  display: flex;
+  flex-direction: column;
+
+  background: #010101;
+  box-shadow: 0px -40px 30px 0px #ffffff1a inset;
+}
+
+#App {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+@font-face {
+  font-family: 'Pill Gothic';
+  src: url('./fonts/PillGothic/PillGothic.eot');
+  src:
+    url('./fonts/PillGothic/PillGothic.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/PillGothic/PillGothic.woff') format('woff'),
+    url('./fonts/PillGothic/PillGothic.woff2') format('woff2'),
+    url('./fonts/PillGothic/PillGothic.ttf') format('truetype'),
+    url('./fonts/PillGothic/PillGothic.svg#Pill Gothic 300mg Bold') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'lufga';
+  src: url('./fonts/lufga/ttf/LufgaRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'lufga';
+  src: url('./fonts/lufga/ttf/LufgaSemiBold.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}

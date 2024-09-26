@@ -1,0 +1,26 @@
+name: Build React and Deploy to AWS S3 #version 1.0
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# Permissions to allow requesting OIDC token
+permissions:
+  id-token: write
+  contents: read
+  packages: read # Allow reading organization packages (npm)
+
+jobs:
+  call-reusable-workflow:
+    uses: Ikigaians/workflow-templates/.github/workflows/build-react.yml@main # 引用可重複使用的 workflow
+    with:
+      # brand: letsgo
+      # product: junglejuice
+      # env-name: CIT
+      # distributionID: E30UH9C52YGFTC # letsgo
+      brand: crystal
+      product: roulette
+      env-name: CIT
+      distributionID: E3RKN49UIADV1C # crystal

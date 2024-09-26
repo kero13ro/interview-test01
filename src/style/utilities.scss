@@ -1,0 +1,80 @@
+.g-number {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+}
+
+@mixin text-golden {
+  background: var(--beige-linear-main, linear-gradient(194deg, #c9ae8d 9.16%, #a57d4e 89.58%));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.g-text-golden {
+  @include text-golden;
+}
+
+@mixin borderGradient($background, $borderWidth: 1px) {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    padding: $borderWidth;
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    border-radius: inherit;
+    pointer-events: none;
+    background: $background;
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@mixin desktop() {
+  @media all and (min-width: 769px) {
+    @content;
+  }
+}
+
+@mixin mobile() {
+  @media all and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin min($min) {
+  @media all and (min-width: ($min + 'px')) {
+    @content;
+  }
+}
+
+@mixin max($max) {
+  @media all and (max-width: ($max + 'px')) {
+    @content;
+  }
+}
+
+@mixin min-max($min, $max) {
+  @media all and (min-width: ($min + 'px')) and (max-width: ($max + 'px')) {
+    @content;
+  }
+}
+
+@mixin no-bar() {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

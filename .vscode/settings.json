@@ -1,0 +1,70 @@
+{
+  "editor.formatOnSave": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["typescript", "typescriptreact"],
+  "cSpell.words": [
+    "Awilix",
+    "backoffice",
+    "betstate",
+    "countup",
+    "fakeserver",
+    "fastify",
+    "Favourite",
+    "healthcheck",
+    "iconify",
+    "Ikigai",
+    "ikigaians",
+    "Ikigian",
+    "Immer",
+    "kbar",
+    "lufga",
+    "openapi",
+    "Parens",
+    "Pixi",
+    "refinedev",
+    "Sider",
+    "svgr",
+    "tailwindcss",
+    "tanstack",
+    "TEMO",
+    "Toastify",
+    "tseslint",
+    "typebox",
+    "usehooks",
+    "VITE",
+    "zustand"
+  ],
+  "prettier.requireConfig": true,
+  "liveServer.settings.port": 3132,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "scss.lint.unknownAtRules": "ignore",
+  "gitlens.autolinks": [
+    {
+      "url": "https://ikigaians.atlassian.net/browse/FND-<num>",
+      "prefix": "FND-"
+    },
+    {
+      "url": "https://ikigaians.atlassian.net/browse/ARO-<num>",
+      "prefix": "ARO-"
+    },
+    {
+      "url": "https://ikigaians.atlassian.net/browse/CBO-<num>",
+      "prefix": "CBO-"
+    },
+    {
+      "url": "https://ikigaians.atlassian.net/browse/CGT-<num>",
+      "prefix": "CGT-"
+    }
+  ]
+}

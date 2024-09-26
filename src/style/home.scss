@@ -1,0 +1,297 @@
+.boardWrap {
+  margin: 4px;
+  box-shadow: 0px 1px 1px 0px #ffffff1f;
+  display: flex;
+  flex-direction: column;
+  max-width: 474px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 32px;
+  @include borderGradient(
+    linear-gradient(
+      180deg,
+      rgba(184, 152, 114, 0.4) 0%,
+      rgba(0, 0, 0, 0) 10.24%,
+      rgba(0, 0, 0, 0) 86.5%,
+      rgba(139, 108, 72, 0.4) 100%
+    )
+  );
+}
+
+#BettingBoard {
+  max-height: calc(550 / 616 * 100%);
+  max-width: calc(304 / 360 * 100vw);
+  height: 100%;
+  aspect-ratio: 862 / 1522;
+  position: absolute;
+  z-index: 1;
+  @apply center;
+
+  .rotateBoard {
+    width: 100%;
+    cursor: pointer;
+    transition: all 1s;
+    bottom: 0;
+    position: relative;
+
+    &.isSlope {
+      bottom: calc(2.9dvh + 2.5dvh);
+      transform-origin: bottom;
+      transform-style: preserve-3d;
+      transform: perspective(200px) rotateX(9.3deg) scale(1.2, 1);
+    }
+  }
+
+  .thickWrap {
+    width: 109%;
+    position: absolute;
+    bottom: -7.8%;
+    left: 50%;
+    z-index: -1;
+    transform: translateX(-50%) scaleY(1.3);
+  }
+
+  .SvgBoardThick {
+    width: 100%;
+    transform-origin: center 30px;
+    opacity: 0;
+    transition: 0.4s all;
+    transform: perspective(200px) rotateX(-10.8deg);
+    &.isSlope {
+      opacity: 1;
+      transition:
+        2s transform,
+        2s opacity;
+      transition-delay: 0.2s;
+    }
+  }
+}
+
+#BetGrid {
+  user-select: none;
+  .wrap {
+    position: absolute;
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1.07fr 0.3fr repeat(3, 0.3fr 0.9fr 0.3fr) 0.3fr 1.07fr;
+    grid-template-rows: 1.44fr 0.3fr repeat(12, 0.3fr 0.9fr 0.3fr) 0.3fr 1.44fr;
+  }
+
+  .visibleBoard [id^='bn_'] {
+    &.hovered {
+      transition: 0.2s all;
+      background-color: hsla(0, 0%, 100%, 0.5);
+    }
+
+    &.topLeft {
+      border-top-left-radius: 18px;
+    }
+    &.topRight {
+      border-top-right-radius: 18px;
+    }
+    &.bottomLeft {
+      border-bottom-left-radius: 18px;
+    }
+    &.bottomRight {
+      border-bottom-right-radius: 18px;
+    }
+  }
+
+  &.devMode {
+    font-size: 10px;
+    white-space: nowrap;
+    span {
+      background-color: rgba(blue, 0.3);
+      @apply center;
+    }
+
+    .referLine {
+      border-top: 0.1px solid rgba(#fff, 0.3);
+      border-left: 0.1px solid rgba(#fff, 0.3);
+
+      > div {
+        border-bottom: 0.1px solid rgba(#fff, 0.3);
+        border-right: 0.1px solid rgba(#fff, 0.3);
+      }
+    }
+  }
+
+  .chip {
+    animation: fadeFromBottom 0.2s forwards;
+  }
+}
+
+#chipSelector {
+  position: absolute;
+  z-index: 1;
+  top: -4px;
+  left: 0;
+  width: 100%;
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-90%);
+
+  .SvgChipSelector {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  &.isOpenSelector {
+    transition:
+      transform 0.4s,
+      opacity 0.4s;
+    pointer-events: all;
+    transform: translateY(-100%);
+    opacity: 1;
+  }
+
+  .mask {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 230px - 60px - 60px + 30px);
+    top: 30px;
+    transform: translateY(-100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
+  }
+}
+
+.boardChip {
+  position: absolute;
+  transform-origin: center;
+  pointer-events: none;
+
+  width: calc((30 + 3) / 314 * 100%);
+
+  font-size: 15px;
+  &.isLg {
+    font-size: 13px;
+  }
+  &.isXl {
+    font-size: 12px;
+  }
+  @include min(400) {
+    font-size: 16px;
+    &.isLg {
+      font-size: 14px;
+    }
+    &.isXl {
+      font-size: 13px;
+    }
+  }
+  @include min(440) {
+    font-size: 17px;
+    &.isLg {
+      font-size: 15px;
+    }
+    &.isXl {
+      font-size: 14px;
+    }
+  }
+  @include min(500) {
+    font-size: 18px;
+    &.isLg {
+      font-size: 16px;
+    }
+    &.isXl {
+      font-size: 15px;
+    }
+  }
+
+  .stroke,
+  .text {
+    position: absolute;
+    left: 49%;
+    top: 53%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-family: 'Pill Gothic';
+  }
+
+  .text {
+    background: linear-gradient(180deg, #3d3f40 28.57%, #0d0d0d 64.29%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 1;
+    letter-spacing: -0.8px;
+  }
+  .stroke {
+    letter-spacing: -0.9px;
+    -webkit-text-stroke: 2px #e7e6de;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .svgChip {
+    transition: transform 1s;
+    margin-right: -2px;
+  }
+}
+
+#Header {
+  .headerChip {
+    height: 16px;
+    min-width: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 4px 2px 4px;
+    font-size: 12px;
+    font-weight: bold;
+    gap: 8px;
+    border-radius: 24px;
+
+    &.red {
+      box-shadow:
+        -1px -1px 9px 0px #28030363 inset,
+        3px 3px 9px 0px #b92f2f7a inset;
+      background: linear-gradient(350.87deg, #5f1111 -0.91%, #811d1d 101.02%);
+    }
+
+    &.black {
+      box-shadow:
+        -1px -1px 9.3px 0px #0607117d inset,
+        1px 1px 5px 0px #a9afd512 inset;
+      background: linear-gradient(351.44deg, #2a2b35 0%, #18191e 101.2%);
+    }
+
+    &.green {
+      box-shadow: 3px 3px 9px 0px #ffffff1a inset;
+      background: #275c3a;
+    }
+  }
+
+  .coverFader {
+    background: linear-gradient(90deg, transparent 80%, #01010185 99%);
+  }
+
+  .bgFader {
+    background: linear-gradient(180deg, #000000 0%, #171819 28.33%, #08090a 43.56%);
+  }
+}
+
+.ClassicChip {
+  width: calc(44 / 368 * 100vw);
+  max-width: 50px;
+  position: relative;
+  @apply center;
+
+  .mainChip {
+    margin-bottom: -4px;
+    margin-right: -4px;
+  }
+
+  .chipSlot {
+    position: absolute;
+    transform: scale(1.4);
+  }
+}
