@@ -63,9 +63,9 @@ export default function ChatList({ type }: { type: ChatRoomType }) {
       <div className="flex flex-col-reverse gap-1">
         {table.get(type)?.map((value, idx) => {
           return value.isMine ? (
-            <MineMessage key={value.key} name={value.name} context={value.msgs} date={value.date} />
+            <MineMessage key={idx} name={value.name} context={value.msgs} date={value.date} />
           ) : (
-            <OthersMessage key={value.key} name={value.name} context={value.msgs} date={value.date} />
+            <OthersMessage key={idx} name={value.name} context={value.msgs} date={value.date} />
           )
         })}
       </div>

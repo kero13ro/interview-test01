@@ -18,13 +18,11 @@ interface IMessageQueue {
   date: number
   msgs: string[]
   isMine: boolean
-  key: number
 }
 
 type ChatType = {
   table: Map<ChatRoomType, IMessageQueue[]>
   count: number
-  sn: number
 
   add: (val: IChatMessage) => void
 }
@@ -32,7 +30,6 @@ type ChatType = {
 export const useChatStore = create<ChatType>((set) => ({
   table: new Map<ChatRoomType, IMessageQueue[]>(),
   count: 0,
-  sn: 0,
   add: (val: IChatMessage) => {
     set((state) => {
       let queue = state.table.get(val.type)
@@ -41,7 +38,6 @@ export const useChatStore = create<ChatType>((set) => ({
         state.table.set(val.type, queue)
       }
 
-      let sn = state.sn
       const latest = queue.length == 0 ? null : queue[0]
       if (!latest || latest.name !== val.name) {
         queue.unshift({
@@ -49,7 +45,6 @@ export const useChatStore = create<ChatType>((set) => ({
           date: 0,
           msgs: [],
           isMine: val.isMine,
-          key: sn++,
         })
       }
       queue[0].date = val.date
@@ -64,7 +59,7 @@ export const useChatStore = create<ChatType>((set) => ({
         count += 1
       }
 
-      return { count: count, sn: sn }
+      return { count }
     })
   },
 }))
