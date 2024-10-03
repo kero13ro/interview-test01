@@ -1,10 +1,10 @@
 {
   "recommendations": [
-    "esbenp.prettier-vscode",
-    "bradlc.vscode-tailwindcss",
-    "streetsidesoftware.code-spell-checker",
-    "bradlc.vscode-tailwindcss",
-    "ms-vscode.vscode-typescript-next",
-    "dbaeumer.vscode-eslint"
+    // "esbenp.prettier-vscode",
+    // "bradlc.vscode-tailwindcss",
+    // "streetsidesoftware.code-spell-checker",
+    // "bradlc.vscode-tailwindcss",
+    // "ms-vscode.vscode-typescript-next",
+    // "dbaeumer.vscode-eslint"
   ]
 }

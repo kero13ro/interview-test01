@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => {
       },
     },
     server: {
-      port: 6600,
+      port: 7600,
       proxy: {
         '/api': {
           target: 'http://localhost:9999',
