@@ -1,9 +1,8 @@
 import { create } from 'zustand'
 
-export type MenuPageType = 'index' | 'history' | 'rules' | 'chat' | 'chat_support'
+export type MenuPageType = 'chat' | 'chat_support'
 
 type BoardLayoutType = {
-  isOpenSelector: boolean
   isOpenMenu: boolean
   menuPage: MenuPageType
 
@@ -11,9 +10,8 @@ type BoardLayoutType = {
 }
 
 export const useLayoutStore = create<BoardLayoutType>((set) => ({
-  isOpenSelector: false,
   menuPage: 'chat',
   isOpenMenu: true,
 
-  closeMenu: () => set({ isOpenMenu: false, menuPage: 'index' }),
+  closeMenu: () => set({ isOpenMenu: false }),
 }))

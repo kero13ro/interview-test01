@@ -30,9 +30,9 @@ const Layout = ({
   const handleBackClick = () => {
     if (handleBack) {
       handleBack()
-      return
+    } else {
+      useLayoutStore.setState({ menuPage: 'chat' })
     }
-    useLayoutStore.setState({ menuPage: 'index' })
   }
 
   const [isBottom, setIsBottom] = useState(false)
@@ -70,18 +70,6 @@ const Layout = ({
 export default function FooterMenu() {
   const menuPage = useLayoutStore((state) => state.menuPage)
 
-  if (menuPage === 'chat') {
-    return (
-      <Layout
-        icon={SVGSupport}
-        header={<ChatHeader />}
-        content={<ChatRoom type={ChatRoomType.Live} />}
-        hideScrollHint={true}
-        handleBack={() => useLayoutStore.setState({ menuPage: 'chat_support' })}
-      />
-    )
-  }
-
   if (menuPage === 'chat_support') {
     return (
       <Layout
@@ -92,29 +80,15 @@ export default function FooterMenu() {
         handleBack={() => useLayoutStore.setState({ menuPage: 'chat' })}
       />
     )
+  } else {
+    return (
+      <Layout
+        icon={SVGSupport}
+        header={<ChatHeader />}
+        content={<ChatRoom type={ChatRoomType.Live} />}
+        hideScrollHint={true}
+        handleBack={() => useLayoutStore.setState({ menuPage: 'chat_support' })}
+      />
+    )
   }
-
-  const leave = () => {
-    window?.parent?.postMessage({ type: 'game', message: JSON.stringify({ method: 'Back Lobby' }) }, '*')
-  }
-
-  //menu index
-  return (
-    <Layout
-      header={<span>Menu</span>}
-      content={
-        <div className="list cursor-pointer">
-          <div className="row" onClick={() => useLayoutStore.setState({ menuPage: 'history' })}>
-            Game History details
-          </div>
-          <div className="row" onClick={() => useLayoutStore.setState({ menuPage: 'rules' })}>
-            <span>Help & Rules</span>
-          </div>
-          <div className="row text-error" onClick={leave}>
-            <span>Leave game</span>
-          </div>
-        </div>
-      }
-    />
-  )
 }
